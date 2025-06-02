@@ -1,0 +1,20 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "A simple personal task manager application built with Node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "node app.js server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node.js",
+    "task-manager",
+    "cli",
+    "http-server"
+  ],
+  "author": "Kasie",
+  "license": "ISC"
+}
+
