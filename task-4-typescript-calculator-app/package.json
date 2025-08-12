@@ -1,0 +1,31 @@
+{
+  "name": "typescript-calculator",
+  "version": "1.0.0",
+  "description": "A command line calculator application built with Node.js and TypeScript",
+  "main": "dist/calculator.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/calculator.js",
+    "dev": "ts-node src/calculator.ts",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "calculator",
+    "nodejs",
+    "typescript",
+    "cli",
+    "command-line",
+    "arithmetic"
+  ],
+  "author": "Ugwu Kasie",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
