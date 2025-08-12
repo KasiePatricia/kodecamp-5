@@ -5,18 +5,11 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-
 // Store calculation history
 let calculationHistory = [];
 let lastResult = null;
 
-
-/**
- * Add two numbers
- * @param {number} a - First number
- * @param {number} b - Second number
- * @returns {number} Sum of a and b
- */
+// Basic math functions
 const add = (a, b) => {
   if (typeof a !== 'number' || typeof b !== 'number') {
     throw new Error('Both arguments must be numbers');
@@ -24,12 +17,6 @@ const add = (a, b) => {
   return a + b;
 }
 
-/**
-* Subtract second number from first number
-* @param {number} a - First number
-* @param {number} b - Second number
-* @returns {number} Difference of a and b
-*/
 const subtract = (a, b) => {
   if (typeof a !== 'number' || typeof b !== 'number') {
     throw new Error('Both arguments must be numbers');
@@ -37,12 +24,6 @@ const subtract = (a, b) => {
   return a - b;
 }
 
-/**
-* Multiply two numbers
-* @param {number} a - First number
-* @param {number} b - Second number
-* @returns {number} Product of a and b
-*/
 const multiply = (a, b) => {
   if (typeof a !== 'number' || typeof b !== 'number') {
     throw new Error('Both arguments must be numbers');
@@ -50,13 +31,7 @@ const multiply = (a, b) => {
   return a * b;
 }
 
-/**
-* Divide first number by second number
-* @param {number} a - Dividend
-* @param {number} b - Divisor
-* @returns {number} Quotient of a divided by b
-* @throws {Error} When dividing by zero
-*/
+// Division with zero check
 const divide = (a, b) => {
   if (typeof a !== 'number' || typeof b !== 'number') {
     throw new Error('Both arguments must be numbers');
@@ -67,40 +42,62 @@ const divide = (a, b) => {
   return a / b;
 }
 
+// Power function using Math.pow
+const power = (base, exponent) => {
+  if (typeof base !== 'number' || typeof exponent !== 'number') {
+    throw new Error('Both arguments must be numbers');
+  }
+  return Math.pow(base, exponent);
+}
 
-// Welcome message
+// Square root with negative number check
+const sqrt = (value) => {
+  if (typeof value !== 'number') {
+    throw new Error('Argument must be a number');
+  }
+  if (value < 0) {
+    throw new Error('Cannot find square root of negative number');
+  }
+  return Math.sqrt(value);
+}
+
+// Calculate what percentage of a number
+const percentage = (value, percentage) => {
+  if (typeof value !== 'number' || typeof percentage !== 'number') {
+    throw new Error('Both arguments must be numbers');
+  }
+  return (value * percentage) / 100;
+}
+
+// Display functions
 const showWelcomeMessage = () => {
   console.log("Welcome to Node.js Calculator!");
 }
 
-// Available operations
 const showAvailableOperations = () => {
   console.log("\nSelect an operation:");
-  console.log("1. Add");
-  console.log("2. Subtract");
-  console.log("3. Multiply");
-  console.log("4. Divide");
-  console.log("5. Show History");
-  console.log("6. Clear History");
-  console.log("7. Exit");
+  console.log('1. Add');
+  console.log('2. Subtract');
+  console.log('3. Multiply');
+  console.log('4. Divide');
+  console.log('5. Power');
+  console.log('6. Square Root');
+  console.log('7. Percentage');
+  console.log('8. Show History');
+  console.log('9. Clear History');
+  console.log('10. Exit');
 }
 
-/**
- * Prompt user for operation choice
- * @returns {Promise<string>} User's choice
- */
+// Get user choice from menu
 const promptOperationChoice = () => {
   return new Promise((resolve) => {
-    rl.question('Enter choice (1-7): ', (choice) => {
+    rl.question('Enter choice (1-10): ', (choice) => {
       resolve(choice.trim());
     });
   });
 }
 
-/**
-* Get two numbers from user input
-* @returns {Promise<Object>} Object containing num1 and num2
-*/
+// Get two numbers for operations like add, subtract etc
 const getTwoNumbers = () => {
   return new Promise((resolve) => {
     rl.question('Enter first number (or type "last" to use previous result): ', (num1) => {
@@ -111,18 +108,23 @@ const getTwoNumbers = () => {
   });
 }
 
-/**
- * Validate and parse number input
- * @param {string} input - Raw input string
- * @returns {Object} Validation result with parsed number or error
- */
+// Get one number for operations like square root
+const getSingleNumber = () => {
+  return new Promise((resolve) => {
+      rl.question('Enter number (or "last" to use previous result): ', (num) => {
+          resolve(num.trim());
+      });
+  });
+}
+
+// Check if the input is valid and convert to number
 const validateAndParseNumber = (input) => {
-  // Handle empty input
+  // Empty input check
   if (!input || input === '') {
     return { valid: false, error: 'Input cannot be empty' };
   }
 
-  // Handle "last" keyword
+  // Check if user wants to use last result
   if (input.toLowerCase() === 'last') {
     if (lastResult === null) {
       return { valid: false, error: 'No previous result available' };
@@ -130,10 +132,10 @@ const validateAndParseNumber = (input) => {
     return { valid: true, number: lastResult };
   }
 
-  // Parse the number
+  // Try to convert to number
   const parsed = parseFloat(input);
 
-  // Check if it's a valid number
+  // Check if conversion worked
   if (isNaN(parsed)) {
     return { valid: false, error: 'Invalid number format' };
   }
@@ -141,12 +143,7 @@ const validateAndParseNumber = (input) => {
   return { valid: true, number: parsed };
 }
 
-/**
- * Validate two numbers from user input
- * @param {string} num1 - First number input
- * @param {string} num2 - Second number input
- * @returns {Object} Validation result
- */
+// Validate both numbers for two-number operations
 const validateNumbers = (num1, num2) => {
   const validation1 = validateAndParseNumber(num1);
   if (!validation1.valid) {
@@ -167,30 +164,20 @@ const validateNumbers = (num1, num2) => {
   };
 }
 
-
-/**
- * Handle invalid input by displaying error message
- * @param {string} message - Error message to display
- */
+// Show error messages to user
 const handleInvalidInput = (message) => {
   console.log(`\n❌ Error: ${message}`);
   console.log('Please try again.\n');
 }
 
-/**
-* Add calculation to history
-* @param {string} operation - The operation performed
-* @param {number} result - The result of the operation
-*/
+// Save calculation to history array
 const addToHistory = (operation, result) => {
   const timestamp = new Date().toLocaleTimeString();
   calculationHistory.push({ operation, result, timestamp });
   lastResult = result;
 }
 
-/**
-* Display calculation history
-*/
+// Display all saved calculations
 const showHistory = () => {
   if (calculationHistory.length === 0) {
     console.log('\n No calculations in history');
@@ -205,32 +192,25 @@ const showHistory = () => {
   console.log('========================');
 }
 
-/**
-* Clear calculation history
-*/
+// Clear all saved calculations
 const clearHistory = () => {
   calculationHistory = [];
   lastResult = null;
   console.log('\n History cleared successfully');
 }
 
-/**
- * Perform calculation and handle result
- * @param {Function} operation - The mathematical operation function
- * @param {number} a - First operand
- * @param {number} b - Second operand (optional for single operand operations)
- * @param {string} operationName - Name of the operation for display
- * @returns {number} Result of the calculation
- */
+// Do the actual calculation and display result
 const performCalculation = (operation, a, b, operationName) => {
   try {
     let result;
     let operationString;
 
+    // For operations with two numbers
     if (b !== undefined) {
       result = operation(a, b);
       operationString = `${a} ${operationName} ${b}`;
     } else {
+      // For operations with one number
       result = operation(a);
       operationString = `${operationName}(${a})`;
     }
@@ -244,24 +224,16 @@ const performCalculation = (operation, a, b, operationName) => {
   }
 }
 
-/**
-* Handle graceful exit
-*/
+// Clean exit when user wants to quit
 const handleExit = () => {
   console.log('\n👋 Thank you for using the calculator!');
   console.log('Goodbye!');
 
-  // Close readline interface
   rl.close();
-
-  // Exit the process
   process.exit(0);
 }
 
-
-/**
- * Main menu loop - handles user interaction
- */
+// Main program loop
 async function mainMenuLoop() {
   showWelcomeMessage();
 
@@ -269,31 +241,32 @@ async function mainMenuLoop() {
     try {
       showAvailableOperations();
 
+      // Show last result if available
       if (lastResult !== null) {
         console.log(`\n Last result: ${lastResult}`);
       }
 
       const choice = await promptOperationChoice();
 
-      // Handle exit
-      if (choice === '7') {
+      // Exit option
+      if (choice === '10') {
         handleExit();
         break;
       }
 
-      // Handle history operations
-      if (choice === '5') {
+      // History options
+      if (choice === '8') {
         showHistory();
         continue;
       }
 
-      if (choice === '6') {
+      if (choice === '9') {
         clearHistory();
         continue;
       }
 
-      // Handle mathematical operations
-      if (['1', '2', '3', '4'].includes(choice)) {
+      // Operations that need two numbers
+      if (['1', '2', '3', '4', '5', '7'].includes(choice)) {
         const { num1, num2 } = await getTwoNumbers();
         const validation = validateNumbers(num1, num2);
 
@@ -304,6 +277,7 @@ async function mainMenuLoop() {
 
         const { a, b } = validation.numbers;
 
+        // Execute the chosen operation
         switch (choice) {
           case '1':
             performCalculation(add, a, b, '+');
@@ -317,11 +291,29 @@ async function mainMenuLoop() {
           case '4':
             performCalculation(divide, a, b, '/');
             break;
+          case '5':
+            performCalculation(power, a, b, '^');
+            break;
+          case '7':
+            performCalculation(percentage, a, b, '% of');
+            break;
         }
       }
-      // Handle invalid choice
+      // Square root only needs one number
+      else if (choice === '6') {
+        const numInput = await getSingleNumber();
+        const validation = validateAndParseNumber(numInput);
+
+        if (!validation.valid) {
+          handleInvalidInput(validation.error);
+          continue;
+        }
+
+        performCalculation(sqrt, validation.number, undefined, '√');
+      }
+      // Handle wrong menu choice
       else {
-        handleInvalidInput('Invalid choice. Please select 1-7.');
+        handleInvalidInput('Invalid choice. Please select 1-10.');
         continue;
       }
 
