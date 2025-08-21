@@ -324,7 +324,7 @@ typescript-calculator/
 ├── .husky/
 │   └── pre-commit            # Pre-commit hook
 ├── .eslintrc.json            # ESLint configuration
-├── .eslintignore             # ESLint ignore rules
+├── .eslint.config.js         # ESLint more config
 ├── .prettierrc               # Prettier configuration
 ├── .prettierignore           # Prettier ignore rules
 ├── tsconfig.json             # TypeScript configuration
