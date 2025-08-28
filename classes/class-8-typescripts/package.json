@@ -1,0 +1,17 @@
+{
+  "name": "class-8-typescripts",
+  "version": "1.0.0",
+  "description": "- what is Typescript? - Why use Typescript? - Typescript environment setup - Basic types - Type annotations - Type inference - Union and intersection - Type aliases - Interfaces - Generics",
+  "main": "index.js",
+  "scripts": {
+		"build": "tsc",
+		"exec": "node ./build/index.js",
+		"dev": "tsc && node ./build/index.js"
+	},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.9.2"
+  }
+}

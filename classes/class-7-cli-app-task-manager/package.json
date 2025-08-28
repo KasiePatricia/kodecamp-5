@@ -1,0 +1,22 @@
+{
+  "name": "class-7-cli-app-task-manager",
+  "version": "1.0.0",
+  "description": "A comprehensive command line task management system",
+  "main": "src/index.js",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kassy (ugwukasiep@gmail.com)",
+  "keywords": [
+		"cli",
+		"task-manager"
+	],
+  "bin": {
+		"task-manager": "./bin/task-manager.js"
+	},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+		"node": ">=22"
+	}
+}
