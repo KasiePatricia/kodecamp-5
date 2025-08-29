@@ -1,4 +1,4 @@
-# NestJS Blog API with Prisma & SQLite
+# <p align="center"> NestJS Blog API with Prisma & SQLite </p>
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
@@ -19,16 +19,11 @@
   <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-<p align="center">
-  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
   <img src="https://img.shields.io/badge/database-SQLite-blue.svg" alt="Database" />
   <img src="https://img.shields.io/badge/ORM-Prisma-2D3748.svg" alt="ORM" />
 </p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## 📋 Description
 
@@ -73,6 +68,25 @@ src/
 prisma/
 ├── schema.prisma
 └── dev.db (generated)
+```
+
+## Development Commands
+
+```bash
+# Generate new controller
+$ nest g controller articles
+
+# Generate new service
+$ nest g service articles
+
+# Generate new module
+$ nest g module articles
+
+# Generate new module
+$ nest g module prisma
+
+# Generate new service
+$ nest g service prisma
 ```
 
 ## 🚦 Getting Started
