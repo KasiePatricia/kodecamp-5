@@ -74,6 +74,7 @@ const search: SearchFunction = (src, sub) => {
 }
 
 //Interface with call signature and  properties
+// nb: read more on call signature and  properties
 interface Counter {
 	(start: number): string
 	interval: number

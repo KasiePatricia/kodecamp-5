@@ -83,7 +83,33 @@
 - Interfaces
 - Generics
 
-11. ## Introduction to Nest.js
+9. ## Typescript tooling
+
+- Tsconfig
+- Development
+    - Tsnode
+    - Tsx
+- Building and bundling for production
+- Tools
+    - Webpack
+    - Esbuild
+    - Rollup
+    - Rolldown
+    - Tsdown
+- CLI App to Typescript
+
+10. ## Enforcing Coding Style
+
+- Introduction
+- Why code style matters
+- Technical benefits
+- Business impact
+- The three-tool ecosystem
+    - ESLint
+    - Pretier
+    - Husky
+
+12. ## Introduction to Nest.js
 
 - Introduction
 - Overview

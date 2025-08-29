@@ -7,16 +7,21 @@
   "license": "MIT",
   "author": "Kassy (ugwukasiep@gmail.com)",
   "keywords": [
-		"cli",
-		"task-manager"
-	],
+    "cli",
+    "task-manager"
+  ],
   "bin": {
-		"task-manager": "./bin/task-manager.js"
-	},
+    "task-manager": "./bin/task-manager.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-		"node": ">=22"
-	}
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
 }

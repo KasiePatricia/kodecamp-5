@@ -1,3 +1,0 @@
-# Enforcing Coding Style
-
-- Introduction
