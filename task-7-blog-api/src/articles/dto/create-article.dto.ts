@@ -12,7 +12,7 @@ export class CreateArticleDto {
   @IsNotEmpty({ message: 'Title is required' })
   @MinLength(1, { message: 'Title cannot be empty' })
   @MaxLength(200, { message: 'Title cannot exceed 200 characters' })
-  title: string;
+  title!: string;
 
   @ApiProperty({
     example:
@@ -23,5 +23,5 @@ export class CreateArticleDto {
   @IsString()
   @IsNotEmpty({ message: 'Content is required' })
   @MinLength(1, { message: 'Content cannot be empty' })
-  content: string;
+  content!: string;
 }

@@ -103,21 +103,4 @@ export class ArticlesController {
   ): Promise<{ message: string; id: number }> {
     return this.articlesService.remove(id);
   }
-
-  @Get('stats/overview')
-  @ApiOperation({ summary: 'Get articles statistics' })
-  @ApiResponse({
-    status: 200,
-    description: 'Articles statistics',
-    schema: {
-      type: 'object',
-      properties: {
-        total: { type: 'number' },
-        latest: { $ref: '#/components/schemas/Article' },
-      },
-    },
-  })
-  async getStats(): Promise<{ total: number; latest: Article | null }> {
-    return this.articlesService.getStats();
-  }
 }

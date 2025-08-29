@@ -3,7 +3,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -18,5 +17,9 @@ model Article {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("articles")
+  // @@map("articles")
+  @@index([title])
 }
+
+
+// id      String @id @default(ulid())
