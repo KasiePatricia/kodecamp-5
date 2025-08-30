@@ -173,7 +173,6 @@ npm run prisma:migrate
 | `GET` | `/articles/:id` | Get a specific article |
 | `PUT` | `/articles/:id` | Update an article |
 | `DELETE` | `/articles/:id` | Delete an article |
-| `GET` | `/articles/stats/overview` | Get articles statistics |
 
 ### Sample Request/Response
 
